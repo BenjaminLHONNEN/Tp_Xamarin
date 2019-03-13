@@ -36,7 +36,7 @@ namespace TPXamarin.Controls
             });
             gestureRecognizer.CommandParameter = CommandParameter;
 
-            InnerSvg.GestureRecognizers.Add(gestureRecognizer);
+            GestureRecognizers.Add(gestureRecognizer);
         }
 
         public ICommand Command
