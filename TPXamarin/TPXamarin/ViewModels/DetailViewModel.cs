@@ -9,27 +9,17 @@ namespace TPXamarin.ViewModels
     public class DetailViewModel : BaseViewModel
     {
         private YoutubeVideoDetailItem _video;
+        
+        private bool _isStatisticsTabVisible = false;
+        private bool _isYoutubeTabVisible = true;
+        
 
-        private bool _isMp3TabVisible = false;
-        private bool _isImageTabVisible = true;
-        private bool _isYoutubeTabVisible = false;
-
-        public bool IsMp3TabVisible
+        public bool IsStatisticsTabVisible
         {
-            get { return _isMp3TabVisible; }
+            get { return _isStatisticsTabVisible; }
             set
             {
-                _isMp3TabVisible = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public bool IsImageTabVisible
-        {
-            get { return _isImageTabVisible; }
-            set
-            {
-                _isImageTabVisible = value;
+                _isStatisticsTabVisible = value;
                 OnPropertyChanged();
             }
         }
@@ -43,8 +33,7 @@ namespace TPXamarin.ViewModels
             }
         }
         public Command SetCurrentTabToYoutube { get; set; }
-        public Command SetCurrentTabToImage { get; set; }
-        public Command SetCurrentTabToMp3 { get; set; }
+        public Command SetCurrentTabToStatistics { get; set; }
 
         public YoutubeVideoDetailItem Video
         {
@@ -66,24 +55,16 @@ namespace TPXamarin.ViewModels
 
         public DetailViewModel(YoutubeSearchItem video)
         {
-            Task.Run(() => { getVideo(video.YoutubeSearchId.VideoId); });
+            Task.Run(async () => { await getVideo(video.YoutubeSearchId.VideoId); });
             
             SetCurrentTabToYoutube = new Command(() =>
             {
-                IsMp3TabVisible = false;
-                IsImageTabVisible = false;
+                IsStatisticsTabVisible = false;
                 IsYoutubeTabVisible = true;
             });
-            SetCurrentTabToImage = new Command(() =>
+            SetCurrentTabToStatistics = new Command(() =>
             {
-                IsMp3TabVisible = false;
-                IsImageTabVisible = true;
-                IsYoutubeTabVisible = false;
-            });
-            SetCurrentTabToMp3 = new Command(() =>
-            {
-                IsMp3TabVisible = true;
-                IsImageTabVisible = false;
+                IsStatisticsTabVisible = true;
                 IsYoutubeTabVisible = false;
             });
         }

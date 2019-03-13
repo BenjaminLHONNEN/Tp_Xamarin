@@ -20,10 +20,26 @@ namespace TPXamarin.ViewModels
             }
         }
 
+        private string _research;
+
+        public string Research
+        {
+            get { return _research; }
+            set {
+                if (_research != value)
+                {
+                    _research = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         public ListViewModel()
         {
             Title = LocalizedResources.VideoList;
             GetYoutubeVideos = new Command(async () => { await getYoutubeVideos(); });
+            ResearchYoutubeVideos = new Command(async () => { await getYoutubeVideos(); });
             GetYoutubeVideos.Execute(null);
         }
 
@@ -40,10 +56,11 @@ namespace TPXamarin.ViewModels
         }
 
         public Command GetYoutubeVideos { get; set; }
+        public Command ResearchYoutubeVideos { get; set; }
 
         private async Task getYoutubeVideos()
         {
-            VideoList = await YoutubeVideoService.GetResearch("boblennon");
+            VideoList = await YoutubeVideoService.GetResearch(_research);
         }
     }
 }

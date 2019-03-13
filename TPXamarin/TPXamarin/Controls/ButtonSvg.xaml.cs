@@ -27,10 +27,16 @@ namespace TPXamarin.Controls
             var gestureRecognizer = new TapGestureRecognizer();
             gestureRecognizer.Tapped += Clicked;
 
-            gestureRecognizer.Command = Command;
+            gestureRecognizer.Command = new Command(() =>
+            {
+                if (Command != null && Command.CanExecute(CommandParameter))
+                {
+                    Command.Execute(CommandParameter);
+                }
+            });
             gestureRecognizer.CommandParameter = CommandParameter;
 
-            GestureRecognizers.Add(gestureRecognizer);
+            InnerSvg.GestureRecognizers.Add(gestureRecognizer);
         }
 
         public ICommand Command
@@ -50,11 +56,7 @@ namespace TPXamarin.Controls
             get => (string)GetValue(SvgSourceProperty);
             set => SetValue(SvgSourceProperty, value);
         }
-
-        public int SvgWidth { get; set; }
-
-        public int SvgHeight { get; set; }
-
+        
         public event EventHandler Clicked;
     }
 }

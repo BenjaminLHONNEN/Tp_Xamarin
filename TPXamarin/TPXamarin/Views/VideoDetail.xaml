@@ -2,13 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:TPXamarin.Controls;assembly=TPXamarin"
+             xmlns:resx="clr-namespace:TPXamarin.Resx;assembly=TPXamarin"
              Title="{Binding Title}"
              x:Class="TPXamarin.VideoDetail">
     <ContentPage.Content>
         <StackLayout Margin="10">
             <Grid>
-                <controls:ButtonSvg Source="statistic.svg" Grid.Column="0" Width="50" Command="{Binding SetCurrentTabToImage}" />
-                <controls:ButtonSvg Source="video.svg" Grid.Column="1" Height="50" Command="{Binding SetCurrentTabToImage}" />
+                <controls:ButtonSvg HeightRequest="100" Source="statistic.svg" Grid.Column="0" Command="{Binding SetCurrentTabToStatistics}" />
+                <controls:ButtonSvg HeightRequest="100" Source="video.svg" Grid.Column="1" Command="{Binding SetCurrentTabToYoutube}" />
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
@@ -16,15 +17,24 @@
             </Grid>
             <ScrollView>
                 <StackLayout Margin="10">
-                    <Image Source="{Binding Video.YoutubeVideoDetailSnippet.YoutubeVideoDetailThumbnails.High.Url}"
-                           WidthRequest="200"
-                           HeightRequest="200"
-                           IsVisible="{Binding IsImageTabVisible}"></Image>
-                    <WebView Source="{Binding Video.Id, Converter={StaticResource YoutubeVideoIdToUrlConverter}}"
-                             HeightRequest="400"
-                             IsVisible="{Binding IsYoutubeTabVisible}"></WebView>
-                    <Label FontSize="Large" Text="{Binding Video.YoutubeVideoDetailSnippet.Title}"></Label>
-                    <Label Text="{Binding Video.YoutubeVideoDetailSnippet.Description}"></Label>
+                    <StackLayout IsVisible="{Binding IsYoutubeTabVisible}">
+                        <WebView Source="{Binding Video.Id, Converter={StaticResource YoutubeVideoIdToUrlConverter}}"
+                                 HeightRequest="400"></WebView>
+                        <Label FontSize="Large" Text="{Binding Video.YoutubeVideoDetailSnippet.Title}"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailSnippet.Description}"></Label>
+                    </StackLayout>
+                    <StackLayout IsVisible="{Binding IsStatisticsTabVisible}">
+                        <Label Text="{x:Static resx:LocalizedResources.ViewCount}" FontSize="Large" TextColor="#c0392b"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailStatistics.ViewCount}"></Label>
+                        <Label Text="{x:Static resx:LocalizedResources.Likes}" FontSize="Large" TextColor="#c0392b"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailStatistics.LikeCount}"></Label>
+                        <Label Text="{x:Static resx:LocalizedResources.Dislikes}" FontSize="Large" TextColor="#c0392b"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailStatistics.DislikeCount}"></Label>
+                        <Label Text="{x:Static resx:LocalizedResources.FavoritesCount}" FontSize="Large" TextColor="#c0392b"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailStatistics.FavoriteCount}"></Label>
+                        <Label Text="{x:Static resx:LocalizedResources.CommentsCount}" FontSize="Large" TextColor="#c0392b"></Label>
+                        <Label Text="{Binding Video.YoutubeVideoDetailStatistics.CommentCount}"></Label>
+                    </StackLayout>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

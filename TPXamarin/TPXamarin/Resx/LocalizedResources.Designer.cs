@@ -22,7 +22,7 @@ namespace TPXamarin.Resx {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class LocalizedResources {
+    public class LocalizedResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace TPXamarin.Resx {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TPXamarin.Resx.LocalizedResources", typeof(LocalizedResources).Assembly);
@@ -51,7 +51,7 @@ namespace TPXamarin.Resx {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,20 +61,65 @@ namespace TPXamarin.Resx {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Comment count.
+        /// </summary>
+        public static string CommentsCount {
+            get {
+                return ResourceManager.GetString("CommentsCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dislike.
+        /// </summary>
+        public static string Dislikes {
+            get {
+                return ResourceManager.GetString("Dislikes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Favorite count.
+        /// </summary>
+        public static string FavoritesCount {
+            get {
+                return ResourceManager.GetString("FavoritesCount", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Hello World !.
         /// </summary>
-        internal static string HelloWorld {
+        public static string HelloWorld {
             get {
                 return ResourceManager.GetString("HelloWorld", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Like.
+        /// </summary>
+        public static string Likes {
+            get {
+                return ResourceManager.GetString("Likes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à BTube.
         /// </summary>
-        internal static string VideoList {
+        public static string VideoList {
             get {
                 return ResourceManager.GetString("VideoList", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à ViewCount.
+        /// </summary>
+        public static string ViewCount {
+            get {
+                return ResourceManager.GetString("ViewCount", resourceCulture);
             }
         }
     }
