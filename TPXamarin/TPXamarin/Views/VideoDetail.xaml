@@ -7,9 +7,9 @@
              x:Class="TPXamarin.VideoDetail">
     <ContentPage.Content>
         <StackLayout Margin="10">
-            <Grid>
-                <controls:ButtonSvg HeightRequest="100" Source="statistic.svg" Grid.Column="0" Command="{Binding SetCurrentTabToStatistics}" />
-                <controls:ButtonSvg HeightRequest="100" Source="video.svg" Grid.Column="1" Command="{Binding SetCurrentTabToYoutube}" />
+            <Grid Margin="10">
+                <controls:ButtonSvg HeightRequest="100" Source="video.svg" Grid.Column="0" Command="{Binding SetCurrentTabToYoutube}" />
+                <controls:ButtonSvg HeightRequest="100" Source="statistic.svg" Grid.Column="1" Command="{Binding SetCurrentTabToStatistics}" />
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
