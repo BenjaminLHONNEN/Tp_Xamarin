@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:controls="clr-namespace:TPXamarin.Controls;assembly=TPXamarin"
+             x:Class="TPXamarin.MainPage"
+             Title="{Binding Title}">
+
+    <StackLayout>
+
+        <ffimageloadingsvg:SvgCachedImage WidthRequest="100" HeightRequest="100" Source="youtube.svg" BackgroundColor="Black"/>
+        <Label HorizontalTextAlignment="Center" FontSize="Large">BTube</Label>
+        <controls:ButtonSvg Source="youtube.svg" HeightRequest="200" WidthRequest="200"></controls:ButtonSvg>
+
+        <ListView  x:Name="MyList" 
+                   IsPullToRefreshEnabled="True"
+                   IsRefreshing="{Binding IsBusy, Mode=OneWay}" 
+                   RefreshCommand="{Binding GetSoundList}"
+                   SeparatorColor="#222222"
+                   HasUnevenRows="True"
+                   ItemsSource="{Binding VideoList.YoutubeSearchItems}" 
+                   SelectedItem="{Binding SelectedVideo}" 
+                   BackgroundColor="#FEFEFE">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <Grid Margin="10">
+                            <Image WidthRequest="{Binding YoutubeSearchSnippet.YoutubeSearchThumbnails.YoutubeSearchDefault.Width}" 
+                                   HeightRequest="{Binding YoutubeSearchSnippet.YoutubeSearchThumbnails.YoutubeSearchDefault.Height}"
+                                   Source="{Binding YoutubeSearchSnippet.YoutubeSearchThumbnails.YoutubeSearchDefault.Url}"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="2"/>
+                            <Label Text="{Binding YoutubeSearchSnippet.Title}"
+                                       Grid.Column="1"
+                                       Grid.Row="0"
+                                       Margin="0,5,0,5" />
+                            <Label Text="{Binding YoutubeSearchSnippet.ChannelTitle}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"
+                                       Margin="0,5,0,5"
+                                       TextColor="#c0392b" />
+                            <ffimageloadingsvg:SvgCachedImage WidthRequest="25" 
+                                                              HeightRequest="25" 
+                                                              Margin="10"
+                                                              HorizontalOptions="CenterAndExpand"
+                                                              Source="left_arrow_chevron.svg"
+                                                              Grid.Column="2"
+                                                              Grid.Row="0"
+                                                              Grid.RowSpan="2">
+                                <ffimageloading:CachedImage.Transformations>
+                                    <fftransformations:TintTransformation HexColor="#c0392b" EnableSolidColor="true"/>
+                                </ffimageloading:CachedImage.Transformations>
+                            </ffimageloadingsvg:SvgCachedImage>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                <ColumnDefinition Width="Auto"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                                <RowDefinition Height="Auto"></RowDefinition>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </StackLayout>
+
+</ContentPage>

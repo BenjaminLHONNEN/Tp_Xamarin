@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TPXamarin.Controls.ButtonImageText">
+    <Frame>
+        <StackLayout Orientation="Horizontal">
+            <Image x:Name="InnerImage" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Image>
+            <Label x:Name="InnerLabel" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"></Label>
+        </StackLayout>
+    </Frame>
+</ContentView>
