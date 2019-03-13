@@ -13,7 +13,7 @@
         <Label HorizontalTextAlignment="Center" FontSize="Large">BTube</Label>
         <Grid HeightRequest="100">
             <Entry HeightRequest="100" Grid.Column="0" Text="{Binding Research}"></Entry>
-            <controls:ButtonSvg Grid.Column="1" Source="search.svg" Command="{Binding ResearchYoutubeVideos}"></controls:ButtonSvg>
+            <controls:ButtonSvg Margin="10" Grid.Column="1" Source="search.svg" Command="{Binding ResearchYoutubeVideos}"></controls:ButtonSvg>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"></ColumnDefinition>
                 <ColumnDefinition Width="Auto"></ColumnDefinition>
