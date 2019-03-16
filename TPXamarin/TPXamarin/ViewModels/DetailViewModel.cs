@@ -49,13 +49,14 @@ namespace TPXamarin.ViewModels
         {
             var video = await YoutubeVideoService.GetVideoById(id);
             Video = video.YoutubeVideoDetailItems.FirstOrDefault();
-            Title = Video.YoutubeVideoDetailSnippet.Title;
+            Title = video.YoutubeVideoDetailItems.FirstOrDefault()?.YoutubeVideoDetailSnippet.Title;
         }
 
 
         public DetailViewModel(YoutubeSearchItem video)
         {
-            Task.Run(async () => { await getVideo(video.YoutubeSearchId.VideoId); });
+           Title = video.YoutubeSearchSnippet.Title;
+           Task.Run(async () => { await getVideo(video.YoutubeSearchId.VideoId); });
             
             SetCurrentTabToYoutube = new Command(() =>
             {
