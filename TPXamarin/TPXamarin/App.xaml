@@ -48,6 +48,10 @@
         <Style TargetType="Label">
             <Setter Property="TextColor" Value="#2c3e50" />
         </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="#e74c3c" />
+            <Setter Property="PlaceholderColor" Value="#e74c3c" />
+        </Style>
 
     </Application.Resources>
 </Application>

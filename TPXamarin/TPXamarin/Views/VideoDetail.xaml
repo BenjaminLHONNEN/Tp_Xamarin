@@ -6,16 +6,20 @@
              Title="{Binding Title}"
              x:Class="TPXamarin.VideoDetail">
     <ContentPage.Content>
-        <StackLayout Margin="10">
-            <Grid Margin="10">
-                <controls:ButtonSvg HeightRequest="100" Source="video.svg" Grid.Column="0" Command="{Binding SetCurrentTabToYoutube}" />
-                <controls:ButtonSvg HeightRequest="100" Source="statistic.svg" Grid.Column="1" Command="{Binding SetCurrentTabToStatistics}" />
+        <Grid Margin="10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Margin="10" Grid.Row="0">
+                <controls:ButtonSvg HeightRequest="50" Source="video.svg" Grid.Column="0" Command="{Binding SetCurrentTabToYoutube}" />
+                <controls:ButtonSvg HeightRequest="50" Source="statistic.svg" Grid.Column="1" Command="{Binding SetCurrentTabToStatistics}" />
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                     <ColumnDefinition Width="*"></ColumnDefinition>
                 </Grid.ColumnDefinitions>
             </Grid>
-            <ScrollView>
+            <ScrollView Grid.Row="1">
                 <StackLayout Margin="10">
                     <StackLayout IsVisible="{Binding IsYoutubeTabVisible}">
                         <WebView Source="{Binding Video.Id, Converter={StaticResource YoutubeVideoIdToUrlConverter}}"
@@ -37,6 +41,6 @@
                     </StackLayout>
                 </StackLayout>
             </ScrollView>
-        </StackLayout>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>
